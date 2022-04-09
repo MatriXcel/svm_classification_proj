@@ -31,8 +31,11 @@ tqdm.pandas()
 
 df_balanced = pd.read_csv('cleaned_balanced_df.csv')
 
-print(df_balanced['text'][4])
-
+bool_series = pd.notnull(df_balanced["text"]) 
+    
+# filtering data 
+# displayind data only with Gender = Not NaN 
+df_balanced = df_balanced[bool_series] 
 
 grid_param = [
     {
