@@ -31,7 +31,7 @@ tqdm.pandas()
 
 df_balanced = pd.read_csv('cleaned_balanced_df.csv')
 
-df_balanced['text']
+print(df_balanced['text'][4])
 
 
 grid_param = [
@@ -62,6 +62,7 @@ gridSearchProcessor = GridSearchCV(estimator=training_pipeline,
                                    param_grid=grid_param,
                                    cv=5)
 
+print("grid search linear svc started")
 gridSearchProcessor.fit(df_balanced['text'], df_balanced['Priority'])
 
 best_params = gridSearchProcessor.best_params_
@@ -96,6 +97,8 @@ tuned_parameters = [{
 gridSearchProcessor_svc = GridSearchCV(estimator=svc_training_pipeline,
                                    param_grid=tuned_parameters,
                                    cv=5)
+
+print("grid search svc started")
 
 gridSearchProcessor_svc.fit(df_balanced['text'], df_balanced['Priority'])
 
