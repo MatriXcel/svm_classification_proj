@@ -57,7 +57,7 @@ grid_param = [
 
 training_pipeline = Pipeline(
     steps=[('tfidf', TfidfVectorizer(stop_words="english")), 
-           ('LinearSVC', LinearSVC(random_state=21, tol=1e-5, verbose=1))])
+           ('LinearSVC', LinearSVC(random_state=21, tol=1e-5))])
 
 training_pipeline.get_params().keys()
 
@@ -86,7 +86,7 @@ print("Best result identified by grid search ", best_result)
 
 svc_training_pipeline = Pipeline(
     steps=[('tfidf', TfidfVectorizer(stop_words="english")), 
-           ('SVC', SVC(random_state=21, tol=1e-5, verbose=1))])
+           ('SVC', SVC(random_state=21, tol=1e-5))])
 
 tuned_parameters = [{
 'tfidf__min_df': [5, 10],
