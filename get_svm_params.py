@@ -57,7 +57,7 @@ grid_param = [
 
 training_pipeline = Pipeline(
     steps=[('tfidf', TfidfVectorizer(stop_words="english")), 
-           ('LinearSVC', LinearSVC(random_state=21, tol=1e-5))])
+           ('LinearSVC', LinearSVC(random_state=21, tol=1e-5, verbose=1))])
 
 training_pipeline.get_params().keys()
 
@@ -86,7 +86,7 @@ print("Best result identified by grid search ", best_result)
 
 svc_training_pipeline = Pipeline(
     steps=[('tfidf', TfidfVectorizer(stop_words="english")), 
-           ('SVC', SVC(random_state=21, tol=1e-5))])
+           ('SVC', SVC(random_state=21, tol=1e-5, verbose=1))])
 
 tuned_parameters = [{
 'tfidf__min_df': [5, 10],
@@ -106,7 +106,7 @@ print("grid search svc started")
 gridSearchProcessor_svc.fit(df_balanced['text'], df_balanced['Priority'])
 
 svc_best_params = gridSearchProcessor_svc.best_params_
-print("Best alpha parameter identified by grid search ", best_params)
+print("Best alpha parameter identified by grid search ", svc_best_params)
 
 svc_best_result = gridSearchProcessor_svc.best_score_
-print("Best result identified by grid search ", best_result)
+print("Best result identified by grid search ", svc_best_result)
